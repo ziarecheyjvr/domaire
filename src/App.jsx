@@ -10,7 +10,6 @@ import DayAtVilla from './sections/DayAtVilla.jsx';
 import Compare from './sections/Compare.jsx';
 import Compose from './sections/Compose.jsx';
 import Approach from './sections/Approach.jsx';
-import Areas from './sections/Areas.jsx';
 import Enquiry from './sections/Enquiry.jsx';
 import Footer from './sections/Footer.jsx';
 
@@ -35,7 +34,6 @@ export default function App({ motion = true, showConceptLabels = true }) {
       <Compare {...ctx} />
       <Compose />
       <Approach {...ctx} />
-      <Areas {...ctx} />
       <Enquiry />
       <Footer />
     </div>

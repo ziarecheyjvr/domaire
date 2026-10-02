@@ -4,7 +4,6 @@ import gPool from './assets/garden-2-pool.webp';
 import gWellness from './assets/garden-3-wellness.webp';
 import gGym from './assets/garden-4-gym.webp';
 import gDusk from './assets/garden-5-dusk.webp';
-import villaNight from './assets/villa-night.webp';
 import livingAfter from './assets/interior-after.webp';
 import kitchenAfter from './assets/kitchen-after.webp';
 
@@ -17,7 +16,6 @@ export const NAV = [
   ['Renovations', '/#compose'],
   ['Projects', '/#work'],
   ['Approach', '/#approach'],
-  ['Areas', '/#areas'],
   ['About', '/about/']
 ];
 
@@ -95,19 +93,7 @@ export const STEPS = [
   ['05', 'FINISH', 'Final details, handover and aftercare.']
 ];
 
-// name, description, image, background-size, background-position
-export const AREAS = [
-  ['Marbella', 'Outdoor transformations & villa renovations', AFTER, '200%', '50% 40%'],
-  ['Benahavís', 'Outdoor living & villa renovation', gDusk, 'cover', 'center'],
-  ['Estepona', 'Outdoor transformations & home renovation', gWellness, 'cover', 'center'],
-  ['Costa del Sol', 'Selected projects across the western coast', villaNight, 'cover', 'center']
-];
-
-export const ADVICE = [
-  'What to decide before redesigning your outdoor space',
-  'Natural swimming pools: does the concept suit your property?',
-  'Pool renovation vs replacement'
-];
+export const AREAS = ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'];
 
 // Enquiry sentence blanks
 export const CHANGE_OPTS = ['the garden', 'the terrace', 'the pool', 'the outdoor kitchen', 'the kitchen', 'a bathroom', 'the whole villa', 'everything, inside and out'];
@@ -117,7 +103,7 @@ export const WHEN_OPTS = ['in the next few months', 'later this year', 'next yea
 export const FOOTER_COLS = [
   { h: 'OUTDOOR LIVING', items: ['Outdoor Transformations', 'Landscaping & Gardens', 'Outdoor Kitchens', 'Pools & Natural Pools'] },
   { h: 'RENOVATIONS', items: ['Complete Villas', 'Interiors', 'Kitchens', 'Bathrooms'] },
-  { h: 'AREAS', items: AREAS.map(a => a[0]) }
+  { h: 'AREAS', items: AREAS }
 ];
 
 // Villa tour chapters: scroll progress to jump to, label, caption
