@@ -15,13 +15,13 @@ export default function Statement({ vh, m }) {
 
   return (
     <section ref={ref} className="statement" data-screen-label="02 Statement">
-      <span className="eyebrow">A BETTER WAY TO LIVE AT HOME</span>
-      <p className="statement-text">
+      <span className="eyebrow" data-reveal>A BETTER WAY TO LIVE AT HOME</span>
+      <p className="statement-text" data-reveal style={{ '--d': '.1s' }}>
         {tokens.map((tk, i) => tk.img
           ? <span key={i} role="img" aria-label={tk.alt} className="statement-img" style={{ width: tk.w, backgroundImage: `url(${tk.img})`, backgroundSize: tk.size, backgroundPosition: tk.pos }} />
           : <span key={i} className={tk.it ? 'statement-em' : undefined}>{tk.t}</span>)}
       </p>
-      <div className="statement-foot">
+      <div className="statement-foot" data-reveal>
         <p className="copy statement-lede">Outdoor is what makes us memorable. When the transformation moves inside, the same team carries it through — managed as one joined-up project.</p>
         <a href="#compose" className="text-link">Compose your project ↓</a>
       </div>

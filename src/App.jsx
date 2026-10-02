@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import useViewport from './useViewport.js';
+import useReveal from './useReveal.js';
 import Header from './sections/Header.jsx';
 import VideoHero from './sections/VideoHero.jsx';
 import Statement from './sections/Statement.jsx';
@@ -16,6 +17,7 @@ import Footer from './sections/Footer.jsx';
 export default function App({ motion = true, showConceptLabels = true }) {
   const { w, vh, y } = useViewport();
   const heroRef = useRef(null);
+  useReveal();
   const m = motion && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = { w, vh, y, m, wide: w >= 1180, labels: showConceptLabels };
 

@@ -28,10 +28,10 @@ export default function Enquiry() {
   return (
     <section id="start" className="start" data-screen-label="10 Enquiry — Sentence">
       <div className="start-inner" onClick={() => pop && setPop(null)}>
-        <span className="eyebrow">START A PROJECT · TELL US WHAT YOU WOULD LIKE TO CHANGE</span>
+        <span className="eyebrow" data-reveal>START A PROJECT · TELL US WHAT YOU WOULD LIKE TO CHANGE</span>
         {!s.sent ? (
           <>
-            <div className="sentence">
+            <div className="sentence" data-reveal style={{ '--d': '.1s' }}>
               <span>I'd like to transform</span>
               {blank('change', CHANGE_OPTS)}
               <span>at my home in</span>
@@ -44,13 +44,13 @@ export default function Enquiry() {
               <input className="sentence-input" style={{ width: '9em' }} value={s.email} onChange={e => set('email', e.target.value)} type="email" placeholder="email or WhatsApp" aria-label="Email or WhatsApp" />
               <span>.</span>
             </div>
-            <div className="start-foot">
+            <div className="start-foot" data-reveal style={{ '--d': '.2s' }}>
               <label className="start-consent"><input type="checkbox" checked={s.consent} onChange={() => set('consent', !s.consent)} />I agree to be contacted about my enquiry and to the privacy policy.</label>
               <button type="button" className={'start-send' + (canSend ? ' is-ready' : '')} onClick={() => canSend && set('sent', true)}>Start your project <span className="start-send-arrow">→</span></button>
             </div>
           </>
         ) : (
-          <div className="start-thanks">
+          <div className="start-thanks" data-reveal>
             <img src={monogramChalk} alt="" />
             <p>Thank you{first ? ', ' + first : ''}. We'll be in touch about {s.change} in {s.place}.</p>
             <button type="button" className="ghost-btn-light" onClick={() => set('sent', false)}>Start another enquiry</button>

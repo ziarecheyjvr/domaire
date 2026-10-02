@@ -35,7 +35,7 @@ export default function Compare({ vh, y, m, labels }) {
 
   return (
     <section id="work" ref={secRef} className="compare" data-screen-label="06 Featured concept — Drag to compare">
-      <div className="compare-head">
+      <div className="compare-head" data-reveal>
         <div className="section-head">
           <span className="eyebrow">FEATURED CONCEPT · DRAG TO COMPARE</span>
           <h2 className="h2">From a lawn to<br /><em>a way of living.</em></h2>
@@ -49,7 +49,7 @@ export default function Compare({ vh, y, m, labels }) {
           </div>
         </div>
       </div>
-      <div ref={baRef} className="ba"
+      <div ref={baRef} className="ba" data-reveal style={{ '--d': '.1s' }}
         onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); setDrag(true); setFrom(e); }}
         onPointerMove={e => { if (drag) setFrom(e); }}
         onPointerUp={() => setDrag(false)} onPointerCancel={() => setDrag(false)}>
@@ -64,7 +64,7 @@ export default function Compare({ vh, y, m, labels }) {
         </div>
         {labels && <span className="ba-concept concept-mark">CONCEPT VISUALISATION — NOT A COMPLETED PROJECT</span>}
       </div>
-      <div className="changes">
+      <div className="changes" data-reveal style={{ '--d': '.15s' }}>
         {CHANGES.map(([n, t, d]) => (
           <div key={n} className="change" style={{ opacity: split > 96 ? .35 : 1 }}>
             <span className="change-n">+ {n}</span>

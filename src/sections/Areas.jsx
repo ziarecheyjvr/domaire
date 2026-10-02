@@ -9,7 +9,7 @@ export default function Areas({ wide }) {
 
   return (
     <section id="areas" className="areas-sec" data-screen-label="09 Areas">
-      <div className="areas-head">
+      <div className="areas-head" data-reveal>
         <div className="section-head">
           <span className="eyebrow">AREAS</span>
           <h2 className="areas-h">Selected projects across the western Costa del Sol.</h2>
@@ -20,8 +20,8 @@ export default function Areas({ wide }) {
         onMouseMove={e => { const r = e.currentTarget.getBoundingClientRect(); setPt({ x: e.clientX - r.left, y: e.clientY - r.top }); }}
         onMouseLeave={() => setArea(-1)}>
         {AREAS.map(([name, d], i) => (
-          <a key={name} href="#start" className="area-row" onMouseEnter={() => setArea(i)}
-            style={{ color: area === i ? '#3F4A3C' : area >= 0 ? 'rgba(35,40,36,.3)' : '#232824' }}>
+          <a key={name} href="#start" className="area-row" data-reveal onMouseEnter={() => setArea(i)}
+            style={{ '--d': i * .08 + 's', color: area === i ? '#3F4A3C' : area >= 0 ? 'rgba(35,40,36,.3)' : '#232824' }}>
             <span className="area-n">(0{i + 1})</span>
             <span className="area-name" style={{ fontStyle: area === i ? 'italic' : 'normal', transform: `translateX(${area === i ? 24 : 0}px)` }}>{name}</span>
             <span className="area-d">{d}</span>
@@ -35,7 +35,7 @@ export default function Areas({ wide }) {
           <div style={{ backgroundImage: `url(${ad[2]})`, backgroundSize: ad[3], backgroundPosition: ad[4] }} />
         </div>
       </div>
-      <div className="advice-row">
+      <div className="advice-row" data-reveal>
         <span className="eyebrow">ADVICE</span>
         {ADVICE.map(v => <a key={v} href="#" className="advice-pill">{v} →</a>)}
       </div>

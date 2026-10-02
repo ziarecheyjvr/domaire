@@ -41,11 +41,11 @@ export default function Lens({ wide, m, labels }) {
       <div className="lens-ring" style={{ opacity: full ? 0 : 1 }}><span>AFTER</span></div>
       <div className="lens-shade" />
       <div className="lens-content">
-        <div className="lens-head">
+        <div className="lens-head" data-reveal>
           <span className="eyebrow">THE CONCEPT — MOVE THE LENS</span>
           <h2 className="lens-h">See what your<br /><em>garden could be.</em></h2>
         </div>
-        <div className="lens-side">
+        <div className="lens-side" data-reveal style={{ '--d': '.2s' }}>
           <span className="lens-hint"><span className="lens-dot" />{full ? 'THE FINISHED GARDEN' : (wide ? 'MOVE ACROSS THE LAWN' : 'TAP TO REVEAL')}</span>
           <p>The same villa, the same lawn. Look through the lens to see the stone pool, olive trees and terrace the concept brings to it.</p>
           <div className="btn-row">

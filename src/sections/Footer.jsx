@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <div className="footer-grid">
+        <div className="footer-grid" data-reveal>
           <div className="footer-brand">
             <img src={monogramChalk} alt="" />
             <p className="footer-motto">Transforming homes.<br />Inside and out.</p>
@@ -18,7 +18,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="footer-base"><span>© DOMAIRE · DESIGN · BUILD · RENOVATE</span><span>Privacy · Legal notice · Cookies · Instagram · LinkedIn · English / Español</span></div>
+        <div className="footer-base" data-reveal style={{ '--d': '.15s' }}><span>© DOMAIRE · DESIGN · BUILD · RENOVATE</span><span>Privacy · Legal notice · Cookies · Instagram · LinkedIn · English / Español</span></div>
       </div>
     </footer>
   );

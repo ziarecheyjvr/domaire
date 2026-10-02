@@ -13,7 +13,7 @@ export default function Rooms({ w, vh, m }) {
   return (
     <section id="rooms" ref={secRef} className={'rooms' + (m ? '' : ' is-static')} data-screen-label="04 Outdoor rooms" style={{ height: m ? Math.round(travel + vh * 1.1) : 'auto' }}>
       <div className="rooms-stage">
-        <div className="rooms-head">
+        <div className="rooms-head" data-reveal>
           <h2 className="rooms-h">Sometimes the best room in the house <em>isn't in the house.</em></h2>
           <div className="rooms-count">
             <span>{String(Math.min(n, 1 + Math.floor(rp * n))).padStart(2, '0')} / {String(n).padStart(2, '0')}</span>

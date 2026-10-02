@@ -30,7 +30,10 @@ export default function VideoHero({ heroRef, m, labels }) {
       <div className="vhero-content">
         <div className="vhero-head">
           <span className="eyebrow">DESIGN · BUILD · RENOVATE — MARBELLA &amp; COSTA DEL SOL</span>
-          <h1 className="vhero-h1">Transforming homes.<br /><em>Inside and out.</em></h1>
+          <h1 className="vhero-h1">
+            <span className="vhero-line" style={{ '--i': 0 }}><span>Transforming homes.</span></span>
+            <span className="vhero-line" style={{ '--i': 1 }}><em>Inside and out.</em></span>
+          </h1>
         </div>
         <div className="vhero-side">
           <p>DOMAIRE designs, builds and renovates homes across Marbella and the Costa del Sol, with a particular specialism in exceptional outdoor spaces.</p>

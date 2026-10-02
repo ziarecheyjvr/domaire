@@ -9,7 +9,7 @@ export default function Approach({ vh, m }) {
   return (
     <section id="approach" ref={ref} className="approach" data-screen-label="08 Approach">
       <div className="approach-inner">
-        <div className="approach-head">
+        <div className="approach-head" data-reveal>
           <div className="section-head">
             <span className="eyebrow">OUR APPROACH</span>
             <h2 className="h2">One project.<br /><em>The right people.</em></h2>

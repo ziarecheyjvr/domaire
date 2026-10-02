@@ -30,21 +30,21 @@ export default function Compose() {
   return (
     <section id="compose" className="compose" data-screen-label="07 Compose your project">
       <div className="compose-main">
-        <div className="section-head">
+        <div className="section-head" data-reveal>
           <span className="eyebrow">WHAT WE DO · COMPOSE YOUR PROJECT</span>
           <h2 className="h2">Choose what you'd like<br /><em>to change.</em></h2>
           <p className="copy compose-copy">Outdoor is what we're known for. When the work moves inside, the same team carries it through. Select anything — we'll show you who it takes.</p>
         </div>
-        <div className="tile-group">
+        <div className="tile-group" data-reveal style={{ '--d': '.1s' }}>
           <span className="label">OUTSIDE</span>
           <div className="tile-grid">{TILES.filter(d => d[1] === 'out').map(renderTile)}</div>
         </div>
-        <div className="tile-group">
+        <div className="tile-group" data-reveal>
           <span className="label">INSIDE</span>
           <div className="tile-grid">{TILES.filter(d => d[1] === 'in').map(renderTile)}</div>
         </div>
       </div>
-      <aside className="brief">
+      <aside className="brief" data-reveal style={{ '--d': '.2s' }}>
         <div className="brief-head">
           <span className="label label--stone">YOUR PROJECT</span>
           <img src={monogramChalk} alt="" />
