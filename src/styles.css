@@ -70,7 +70,7 @@ section[id] { scroll-margin-top: 0; }
 .vhero-content { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(32px, 8vh, 96px); display: flex; justify-content: space-between; align-items: flex-end; gap: 28px 48px; flex-wrap: wrap; }
 .vhero-head { display: flex; flex-direction: column; gap: 22px; }
 .vhero-head .eyebrow { color: var(--sand); }
-.vhero-h1 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(52px, min(8.6vw, 13vh), 150px); line-height: .88; letter-spacing: -.03em; text-shadow: 0 2px 30px rgba(20, 24, 19, .35); }
+.vhero-h1 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(52px, min(8.6vw, 13vh), 150px); line-height: 1.04; letter-spacing: -.03em; text-shadow: 0 2px 30px rgba(20, 24, 19, .35); }
 .vhero-h1 em { color: var(--sand); }
 .vhero-side { display: flex; flex-direction: column; gap: 20px; max-width: 400px; }
 .vhero-side p { margin: 0; font-size: 15px; line-height: 1.65; font-weight: 300; text-wrap: pretty; }
