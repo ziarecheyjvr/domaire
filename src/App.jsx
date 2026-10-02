@@ -27,7 +27,7 @@ export default function App({ motion = true, showConceptLabels = true }) {
     <div className="page">
       <Header dark={y < heroEnd} wide={ctx.wide} />
       <VideoHero heroRef={heroRef} {...ctx} />
-      <Statement {...ctx} />
+      <Statement />
       <VillaTour {...ctx} />
       <Rooms {...ctx} />
       <DayAtVilla {...ctx} />

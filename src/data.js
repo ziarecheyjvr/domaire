@@ -19,14 +19,13 @@ export const NAV = [
   ['About', '/about/']
 ];
 
-// Statement copy: [key] inserts an image pill, *word* is italicised
-export const STATEMENT = 'A home can already be [terrace] beautiful and still have more to give. A terrace can work harder. A garden can [pool] connect to the house. A kitchen can open into the way you [kitchen] entertain. An entire villa can be rethought around the way you [living] *live *now.';
-export const STATEMENT_IMAGES = {
-  terrace: [AFTER, '360%', '42% 50%', 'Terrace'],
-  pool: [gPool, '240%', '50% 74%', 'Natural pool'],
-  kitchen: [kitchenAfter, '220%', '55% 60%', 'Kitchen'],
-  living: [livingAfter, '200%', '30% 70%', 'Living room']
-};
+// A better way to live at home: label, line, image, background-size, background-position
+export const BETTER_WAYS = [
+  ['THE TERRACE', 'A terrace can work harder.', AFTER, '300%', '42% 52%'],
+  ['THE GARDEN', 'A garden can connect to the house.', gWellness, '170%', '50% 70%'],
+  ['THE KITCHEN', 'A kitchen can open into the way you entertain.', kitchenAfter, 'cover', '40% 50%'],
+  ['THE WHOLE VILLA', 'An entire villa can be rethought around the way you live now.', livingAfter, 'cover', '35% 50%']
+];
 
 // label, title, image, background-size, background-position, filter
 export const ROOMS = [
@@ -95,10 +94,11 @@ export const STEPS = [
 
 export const AREAS = ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'];
 
-// Enquiry sentence blanks
-export const CHANGE_OPTS = ['the garden', 'the terrace', 'the pool', 'the outdoor kitchen', 'the kitchen', 'a bathroom', 'the whole villa', 'everything, inside and out'];
-export const PLACE_OPTS = ['Marbella', 'Benahavís', 'Estepona', 'elsewhere on the Costa del Sol'];
-export const WHEN_OPTS = ['in the next few months', 'later this year', 'next year', 'when the time is right'];
+// Enquiry form options
+export const CHANGE_OPTS = ['Garden & landscaping', 'Terrace & outdoor living', 'Pool or natural pool', 'Outdoor kitchen', 'Sauna & cold plunge', 'Outdoor gym', 'Kitchen', 'Bathroom', 'Interiors', 'Complete villa renovation', 'Extension or reconfiguration', 'Something else'];
+export const PLACE_OPTS = ['Marbella', 'Benahavís', 'Estepona', 'Elsewhere on the Costa del Sol', 'Outside the Costa del Sol'];
+export const WHEN_OPTS = ['As soon as possible', 'In the next 3–6 months', 'Later this year', 'Next year', 'Just exploring for now'];
+export const BUDGET_OPTS = ['Under €50,000', '€50,000 – €150,000', '€150,000 – €500,000', '€500,000 – €1M', 'Over €1M', 'Not sure yet'];
 
 export const FOOTER_COLS = [
   { h: 'OUTDOOR LIVING', items: ['Outdoor Transformations', 'Landscaping & Gardens', 'Outdoor Kitchens', 'Pools & Natural Pools'] },
