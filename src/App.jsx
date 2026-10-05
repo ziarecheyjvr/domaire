@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useViewport from './useViewport.js';
 import useReveal from './useReveal.js';
 import Header from './sections/Header.jsx';
@@ -17,6 +17,8 @@ import QuoteModal from './sections/QuoteModal.jsx';
 export default function App({ motion = true, showConceptLabels = true }) {
   const { w, vh, y } = useViewport();
   const heroRef = useRef(null);
+  // The brief composed in "What we do" — handed to the enquiry form on "Continue with this brief"
+  const [brief, setBrief] = useState(null);
   useReveal();
   const m = motion && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = { w, vh, y, m, wide: w >= 1180, labels: showConceptLabels };
@@ -33,9 +35,9 @@ export default function App({ motion = true, showConceptLabels = true }) {
       <Rooms {...ctx} />
       <DayAtVilla {...ctx} />
       <Compare {...ctx} />
-      <Compose />
+      <Compose onContinue={work => setBrief({ work, at: Date.now() })} />
       <Approach {...ctx} />
-      <Enquiry />
+      <Enquiry brief={brief} />
       <Footer />
       <QuoteModal />
     </div>

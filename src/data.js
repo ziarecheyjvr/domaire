@@ -95,9 +95,15 @@ export const STEPS = [
 export const AREAS = ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'];
 
 // Enquiry form options
-export const CHANGE_OPTS = ['Garden & landscaping', 'Terrace & outdoor living', 'Pool or natural pool', 'Outdoor kitchen', 'Sauna & cold plunge', 'Outdoor gym', 'Kitchen', 'Bathroom', 'Interiors', 'Complete villa renovation', 'Extension or reconfiguration', 'Something else'];
+export const CHANGE_OPTS = ['Garden & landscaping', 'Terrace & outdoor living', 'Pool or natural pool', 'Outdoor kitchen', 'Sauna & cold plunge', 'Outdoor gym', 'Shade & pergolas', 'Outdoor lighting', 'Kitchen', 'Bathroom', 'Interiors', 'Complete villa renovation', 'Extension or reconfiguration', 'Something else'];
 export const PLACE_OPTS = ['Marbella', 'Benahavís', 'Estepona', 'Elsewhere on the Costa del Sol', 'Outside the Costa del Sol'];
 export const WHEN_OPTS = ['As soon as possible', 'In the next 3–6 months', 'Later this year', 'Next year', 'Just exploring for now'];
+// Compose tile id → enquiry form option, so a composed brief carries over to the form
+export const TILE_TO_FORM = {
+  terrace: 'Terrace & outdoor living', pool: 'Pool or natural pool', okitchen: 'Outdoor kitchen', planting: 'Garden & landscaping',
+  wellness: 'Sauna & cold plunge', gym: 'Outdoor gym', shade: 'Shade & pergolas', light: 'Outdoor lighting',
+  kitchen: 'Kitchen', bath: 'Bathroom', interiors: 'Interiors', villa: 'Complete villa renovation', ext: 'Extension or reconfiguration'
+};
 export const BUDGET_OPTS = ['Under €50,000', '€50,000 – €150,000', '€150,000 – €500,000', '€500,000 – €1M', 'Over €1M', 'Not sure yet'];
 
 export const FOOTER_COLS = [

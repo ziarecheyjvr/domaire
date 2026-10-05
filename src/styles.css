@@ -299,6 +299,8 @@ textarea.fi { resize: vertical; line-height: 1.55; min-height: 128px; }
   background-image: linear-gradient(45deg, transparent 50%, var(--olive) 50%), linear-gradient(-45deg, transparent 50%, var(--olive) 50%);
   background-position: right 20px center, right 14px center; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
 .ff-set .ff-label { margin-bottom: 6px; }
+.ff-carried { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin: 0 0 10px; padding: 7px 12px; border-radius: 40px; background: rgba(63, 74, 60, .08); color: var(--olive); font-size: 12.5px; }
+.ff-carried::before { content: '✓'; font-size: 11px; }
 .fchecks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 8px; }
 .fcheck { position: relative; display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid rgba(35, 40, 36, .18); border-radius: 6px; background: #fff; font-size: 14px; cursor: pointer; transition: border-color .2s, background .2s; }
 .fcheck:hover { border-color: rgba(35, 40, 36, .4); }

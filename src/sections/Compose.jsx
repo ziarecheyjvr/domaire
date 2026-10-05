@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import monogramChalk from '../assets/monogram-chalk.png';
-import { NUM, TILES } from '../data.js';
+import { NUM, TILES, TILE_TO_FORM } from '../data.js';
 
 // What we do · compose your project — pick elements, see the specialists it takes
-export default function Compose() {
+export default function Compose({ onContinue }) {
   const [sel, setSel] = useState(['pool', 'planting', 'okitchen']);
   const toggle = id => setSel(s => s.includes(id) ? s.filter(x => x !== id) : [...s, id]);
 
@@ -62,7 +62,7 @@ export default function Compose() {
           <div className="chips">{specs.map(s => <span key={s} className="spec">{s}</span>)}</div>
         </div>
         <p className="brief-summary">{summaryLine}</p>
-        <a href="#start" className="pill-cta">Continue with this brief <span className="pill-cta-arrow">→</span></a>
+        <a href="#start" className="pill-cta" onClick={() => onContinue && onContinue(chosen.map(d => TILE_TO_FORM[d[0]]).filter(Boolean))}>Continue with this brief <span className="pill-cta-arrow">→</span></a>
       </aside>
     </section>
   );

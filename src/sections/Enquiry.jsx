@@ -12,11 +12,20 @@ const sizeLabel = b => b > 1024 * 1024 ? (b / 1024 / 1024).toFixed(1) + ' MB' : 
 
 // Start a project — enquiry form with an upload for photos, inspiration or plans of what they want done.
 // Fields carry name attributes so the form can be pointed at a form service or API as-is.
-export default function Enquiry() {
+export default function Enquiry({ brief }) {
   const [f, setF] = useState(EMPTY);
   const [touched, setTouched] = useState({});
   const [tried, setTried] = useState(false);
   const [sent, setSent] = useState(false);
+  const [fromBrief, setFromBrief] = useState(false);
+
+  // A brief arriving from "Compose your project" ticks the matching boxes (and reopens the form if already sent)
+  useEffect(() => {
+    if (!brief) return;
+    setF(s => ({ ...s, work: brief.work }));
+    setFromBrief(brief.work.length > 0);
+    setSent(false);
+  }, [brief]);
   const set = (k, v) => setF(s => ({ ...s, [k]: v }));
   const touch = k => setTouched(t => ({ ...t, [k]: true }));
   const toggleWork = o => setF(s => ({ ...s, work: s.work.includes(o) ? s.work.filter(x => x !== o) : [...s.work, o] }));
@@ -56,7 +65,7 @@ export default function Enquiry() {
     // No backend yet — the enquiry (FormData incl. files) is ready to POST here
     setSent(true);
   };
-  const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(''); setF(EMPTY); setTouched({}); setTried(false); setSent(false); };
+  const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(''); setF(EMPTY); setTouched({}); setTried(false); setSent(false); setFromBrief(false); };
 
   const field = (k, label, input, { req, hint } = {}) => (
     <label className={'ff' + (show(k) ? ' is-invalid' : '')}>
@@ -97,6 +106,7 @@ export default function Enquiry() {
 
             <fieldset className={'ff ff-set' + (show('work') ? ' is-invalid' : '')}>
               <legend className="ff-label">What would you like done?<span className="ff-req" aria-hidden="true"> *</span> <span className="ff-opt">Choose all that apply</span></legend>
+              {fromBrief && <span className="ff-carried">Carried over from your project brief — adjust as needed.</span>}
               <div className="fchecks">
                 {CHANGE_OPTS.map(o => (
                   <label key={o} className={'fcheck' + (f.work.includes(o) ? ' is-on' : '')}>
