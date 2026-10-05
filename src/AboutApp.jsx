@@ -3,6 +3,7 @@ import useReveal from './useReveal.js';
 import Header from './sections/Header.jsx';
 import Lens from './sections/Lens.jsx';
 import Footer from './sections/Footer.jsx';
+import QuoteModal from './sections/QuoteModal.jsx';
 
 // About page — opens on the interactive lens, then who DOMAIRE are
 export default function AboutApp({ motion = true, showConceptLabels = true }) {
@@ -29,6 +30,7 @@ export default function AboutApp({ motion = true, showConceptLabels = true }) {
         </div>
       </section>
       <Footer />
+      <QuoteModal formHref="/#start" />
     </div>
   );
 }

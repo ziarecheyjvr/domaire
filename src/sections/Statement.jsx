@@ -7,7 +7,7 @@ export default function Statement() {
       <div className="statement-head">
         <div className="section-head" data-reveal>
           <span className="eyebrow">A BETTER WAY TO LIVE AT HOME</span>
-          <h2 className="h2">A home can already be beautiful<br /><em>and still have more to give.</em></h2>
+          <h2 className="h2"><span className="statement-line">A home can already be beautiful</span><br /><em>and still have more to give.</em></h2>
         </div>
         <div className="statement-intro" data-reveal style={{ '--d': '.15s' }}>
           <p className="copy">Outdoor is what makes us memorable. When the transformation moves inside, the same team carries it through — managed as one joined-up project.</p>

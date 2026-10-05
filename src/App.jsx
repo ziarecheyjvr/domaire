@@ -12,6 +12,7 @@ import Compose from './sections/Compose.jsx';
 import Approach from './sections/Approach.jsx';
 import Enquiry from './sections/Enquiry.jsx';
 import Footer from './sections/Footer.jsx';
+import QuoteModal from './sections/QuoteModal.jsx';
 
 export default function App({ motion = true, showConceptLabels = true }) {
   const { w, vh, y } = useViewport();
@@ -36,6 +37,7 @@ export default function App({ motion = true, showConceptLabels = true }) {
       <Approach {...ctx} />
       <Enquiry />
       <Footer />
+      <QuoteModal />
     </div>
   );
 }
