@@ -10,33 +10,33 @@ import kitchenAfter from './assets/kitchen-after.webp';
 export const PX = (id, w) => 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=' + (w || 900);
 export const AFTER = villaAfter;
 
-// label, anchor
+// nav key (label in content.js), anchor
 export const NAV = [
-  ['Outdoor Living', '/#rooms'],
-  ['Renovations', '/#compose'],
-  ['Projects', '/#work'],
-  ['Approach', '/#approach'],
-  ['About', '/about/']
+  ['outdoor', '/#rooms'],
+  ['renovations', '/#compose'],
+  ['projects', '/#work'],
+  ['approach', '/#approach'],
+  ['about', '/about/']
 ];
 
-// A better way to live at home: label, line, image, background-size, background-position
+// A better way to live at home (copy: content.ways): image, background-size, background-position
 export const BETTER_WAYS = [
-  ['THE TERRACE', 'A terrace can work harder.', AFTER, '300%', '42% 52%'],
-  ['THE GARDEN', 'A garden can connect to the house.', gWellness, '170%', '50% 70%'],
-  ['THE KITCHEN', 'A kitchen can open into the way you entertain.', kitchenAfter, 'cover', '40% 50%'],
-  ['THE WHOLE VILLA', 'An entire villa can be rethought around the way you live now.', livingAfter, 'cover', '35% 50%']
+  [AFTER, '300%', '42% 52%'],
+  [gWellness, '170%', '50% 70%'],
+  [kitchenAfter, 'cover', '40% 50%'],
+  [livingAfter, 'cover', '35% 50%']
 ];
 
-// label, title, image, background-size, background-position, filter
+// Outdoor rooms carousel (copy: content.rooms.items): image, background-size, background-position, filter
 export const ROOMS = [
-  ['THE TERRACE', 'Where mornings start.', AFTER, '360%', '42% 50%', 'none'],
-  ['THE POOL', 'More than the pool itself.', gPool, '230%', '50% 74%', 'none'],
-  ['THE OUTDOOR KITCHEN', 'Built around the way you host.', gLawnKitchen, '330%', '88% 50%', 'none'],
-  ['THE WELLNESS CORNER', 'Heat, then cold.', gWellness, '360%', '5% 58%', 'none'],
-  ['THE PLANTING', 'Structure, character and connection.', gWellness, '300%', '88% 72%', 'none'],
-  ['THE OUTDOOR GYM', 'Train in the open air.', gGym, '300%', '0% 47%', 'none'],
-  ['THE SHADE', 'Spend longer outside.', AFTER, '380%', '2% 44%', 'none'],
-  ['AFTER DARK', 'How it all feels after the sun goes down.', gDusk, '200%', '55% 60%', 'none']
+  [AFTER, '360%', '42% 50%', 'none'],
+  [gPool, '230%', '50% 74%', 'none'],
+  [gLawnKitchen, '330%', '88% 50%', 'none'],
+  [gWellness, '360%', '5% 58%', 'none'],
+  [gWellness, '300%', '88% 72%', 'none'],
+  [gGym, '300%', '0% 47%', 'none'],
+  [AFTER, '380%', '2% 44%', 'none'],
+  [gDusk, '200%', '55% 60%', 'none']
 ];
 
 // hour, brightness, saturate, sepia, tint r,g,b, tint strength (0 = white), glow
@@ -48,75 +48,36 @@ export const SKY = [
   [22.5, .4, .75, .15, 70, 85, 130, .7, 1]
 ];
 
-// hour, label, caption
-export const MOMENTS = [
-  [7.5, 'FIRST LIGHT', 'Coffee on the terrace before the day begins.'],
-  [13, 'MIDDAY', 'Lunch in the shade, a step from the kitchen.'],
-  [16.5, 'AFTERNOON', 'The pool, the loungers, the long afternoon.'],
-  [19.5, 'GOLDEN HOUR', 'Friends arrive. The outdoor kitchen takes over.'],
-  [22, 'AFTER DARK', 'Lighting turns the garden into a room of its own.']
-];
+// Hour of each moment in the day section (copy: content.day.moments)
+export const MOMENT_HOURS = [7.5, 13, 16.5, 19.5, 22];
 
-// number, title, description
-export const CHANGES = [
-  ['01', 'A natural stone pool', 'Shaped to the garden, with a shallow beach entry and stone surround.'],
-  ['02', 'An outdoor kitchen', 'Cooking, prep and dining under the olive tree, connected back to the house.'],
-  ['03', 'Mediterranean planting', 'Lavender, agapanthus and olives give structure and privacy.'],
-  ['04', 'Places to stay longer', 'Loungers, shade and lighting so the garden works all day.']
-];
-
-// id, group, label, image, background-size, background-position, specialists, extra filter
+// id, group, image, background-size, background-position, specialist ids (labels: content.tiles / content.specs), extra filter
 export const TILES = [
-  ['terrace', 'out', 'Terraces & outdoor living', AFTER, '360%', '42% 50%', ['Garden designer', 'Stonework']],
-  ['pool', 'out', 'Pools & natural pools', gPool, '220%', '50% 74%', ['Pool engineer', 'Landscape architect']],
-  ['okitchen', 'out', 'Outdoor kitchens', gLawnKitchen, '330%', '88% 50%', ['Kitchen designer', 'MEP engineer']],
-  ['planting', 'out', 'Landscaping & planting', gWellness, '300%', '88% 72%', ['Landscape architect', 'Irrigation']],
-  ['wellness', 'out', 'Sauna & cold plunge', gWellness, '340%', '5% 58%', ['Wellness specialist', 'Plumbing', 'Electrical']],
-  ['gym', 'out', 'Outdoor gym', gGym, '300%', '0% 47%', ['Landscape architect', 'Structural engineer']],
-  ['shade', 'out', 'Shade & pergolas', AFTER, '380%', '2% 44%', ['Architect', 'Structural engineer']],
-  ['light', 'out', 'Outdoor lighting', gDusk, '160%', '55% 60%', ['Lighting designer', 'Electrical']],
-  ['kitchen', 'in', 'Kitchens', kitchenAfter, 'cover', 'center', ['Kitchen designer', 'MEP engineer']],
-  ['bath', 'in', 'Bathrooms', PX(1457847), 'cover', 'center', ['Interior designer', 'Plumbing']],
-  ['interiors', 'in', 'Interiors', livingAfter, 'cover', 'center', ['Interior designer']],
-  ['villa', 'in', 'Complete villa renovation', PX(323780), 'cover', 'center', ['Architect', 'Interior designer', 'Structural engineer', 'MEP engineer']],
-  ['ext', 'in', 'Extensions & reconfiguration', PX(1974596), 'cover', 'center', ['Architect', 'Structural engineer', 'Licensing']]
+  ['terrace', 'out', AFTER, '360%', '42% 50%', ['garden', 'stone']],
+  ['pool', 'out', gPool, '220%', '50% 74%', ['poolEng', 'landscape']],
+  ['okitchen', 'out', gLawnKitchen, '330%', '88% 50%', ['kitchen', 'mep']],
+  ['planting', 'out', gWellness, '300%', '88% 72%', ['landscape', 'irrigation']],
+  ['wellness', 'out', gWellness, '340%', '5% 58%', ['wellness', 'plumbing', 'electrical']],
+  ['gym', 'out', gGym, '300%', '0% 47%', ['landscape', 'structural']],
+  ['shade', 'out', AFTER, '380%', '2% 44%', ['architect', 'structural']],
+  ['light', 'out', gDusk, '160%', '55% 60%', ['lighting', 'electrical']],
+  ['kitchen', 'in', kitchenAfter, 'cover', 'center', ['kitchen', 'mep']],
+  ['bath', 'in', PX(1457847), 'cover', 'center', ['interior', 'plumbing']],
+  ['interiors', 'in', livingAfter, 'cover', 'center', ['interior']],
+  ['villa', 'in', PX(323780), 'cover', 'center', ['architect', 'interior', 'structural', 'mep']],
+  ['ext', 'in', PX(1974596), 'cover', 'center', ['architect', 'structural', 'licensing']]
 ];
 
-export const NUM = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven'];
-
-export const STEPS = [
-  ['01', 'UNDERSTAND', 'Property, priorities and what needs to change.'],
-  ['02', 'DEVELOP', 'Concept, design and the right technical specialists.'],
-  ['03', 'DEFINE', 'Scope, specification, programme and stages.'],
-  ['04', 'BUILD', 'Coordinated work, reporting and decisions.'],
-  ['05', 'FINISH', 'Final details, handover and aftercare.']
-];
-
-export const AREAS = ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'];
-
-// Enquiry form options
-export const CHANGE_OPTS = ['Garden & landscaping', 'Terrace & outdoor living', 'Pool or natural pool', 'Outdoor kitchen', 'Sauna & cold plunge', 'Outdoor gym', 'Shade & pergolas', 'Outdoor lighting', 'Kitchen', 'Bathroom', 'Interiors', 'Complete villa renovation', 'Extension or reconfiguration', 'Something else'];
-export const PLACE_OPTS = ['Marbella', 'Benahavís', 'Estepona', 'Elsewhere on the Costa del Sol', 'Outside the Costa del Sol'];
-export const WHEN_OPTS = ['As soon as possible', 'In the next 3–6 months', 'Later this year', 'Next year', 'Just exploring for now'];
-// Compose tile id → enquiry form option, so a composed brief carries over to the form
+// Enquiry form option ids (labels: content.options)
+export const WORK_IDS = ['garden', 'terrace', 'pool', 'okitchen', 'wellness', 'gym', 'shade', 'light', 'kitchen', 'bath', 'interiors', 'villa', 'ext', 'other'];
+export const PLACE_IDS = ['marbella', 'benahavis', 'estepona', 'elsewhere', 'outside'];
+export const WHEN_IDS = ['asap', 'soon', 'year', 'next', 'exploring'];
+export const BUDGET_IDS = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'];
+// Compose tile id → enquiry form option id, so a composed brief carries over to the form
 export const TILE_TO_FORM = {
-  terrace: 'Terrace & outdoor living', pool: 'Pool or natural pool', okitchen: 'Outdoor kitchen', planting: 'Garden & landscaping',
-  wellness: 'Sauna & cold plunge', gym: 'Outdoor gym', shade: 'Shade & pergolas', light: 'Outdoor lighting',
-  kitchen: 'Kitchen', bath: 'Bathroom', interiors: 'Interiors', villa: 'Complete villa renovation', ext: 'Extension or reconfiguration'
+  terrace: 'terrace', pool: 'pool', okitchen: 'okitchen', planting: 'garden', wellness: 'wellness', gym: 'gym',
+  shade: 'shade', light: 'light', kitchen: 'kitchen', bath: 'bath', interiors: 'interiors', villa: 'villa', ext: 'ext'
 };
-export const BUDGET_OPTS = ['Under €50,000', '€50,000 – €150,000', '€150,000 – €500,000', '€500,000 – €1M', 'Over €1M', 'Not sure yet'];
 
-export const FOOTER_COLS = [
-  { h: 'OUTDOOR LIVING', items: ['Outdoor Transformations', 'Landscaping & Gardens', 'Outdoor Kitchens', 'Pools & Natural Pools'] },
-  { h: 'RENOVATIONS', items: ['Complete Villas', 'Interiors', 'Kitchens', 'Bathrooms'] },
-  { h: 'AREAS', items: AREAS }
-];
-
-// Villa tour chapters: scroll progress to jump to, label, caption
-export const TOUR = [
-  [.03, 'AS IT IS', 'A beautiful house. A garden that gives very little back.'],
-  [.2, 'THE OUTSIDE, DESIGNED', 'Natural pool, sauna, cold plunge and an outdoor kitchen — one complete idea.'],
-  [.42, 'STEP INSIDE', 'The same eye, carried through the glass doors.'],
-  [.62, 'THE LIVING ROOM, DESIGNED', 'Calm materials, open glass, the garden as part of the room.'],
-  [.8, 'THE KITCHEN, DESIGNED', 'The room that connects everything — opened straight onto the outdoor kitchen.']
-];
+// Villa tour chapters (copy: content.tour.chapters): scroll progress to jump to
+export const TOUR = [.03, .2, .42, .62, .8];

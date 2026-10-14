@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import heroBefore from '../assets/hero-before.jpg';
 import heroAfter from '../assets/hero-after.jpg';
+import { useT } from '../i18n.jsx';
 
 // See what your garden could be — a lens that reveals the finished garden over the lawn
 export default function Lens({ wide, m, labels }) {
+  const t = useT().lens;
   const ref = useRef(null);
   const [full, setFull] = useState(false);
   const [anim, setAnim] = useState(false);
@@ -36,23 +38,23 @@ export default function Lens({ wide, m, labels }) {
     <section id="lens" ref={ref} className="lens" data-screen-label="01 Lens — See what your garden could be"
       onPointerMove={onMove} onClick={e => { if (!e.target.closest('a,button')) set(!full); }}
       style={{ '--r': full ? '150vmax' : 'min(24vmin,240px)', cursor: full ? 'zoom-out' : 'crosshair' }}>
-      <img src={heroBefore} alt="The villa before: an empty lawn" draggable="false" className="lens-img lens-before" />
-      <img src={heroAfter} alt="The villa after: natural stone pool, olive trees and outdoor living" draggable="false" className="lens-img lens-after" style={{ transition: anim ? 'clip-path .9s cubic-bezier(.7,0,.2,1)' : 'none' }} />
-      <div className="lens-ring" style={{ opacity: full ? 0 : 1 }}><span>AFTER</span></div>
+      <img src={heroBefore} alt={t.altBefore} draggable="false" className="lens-img lens-before" />
+      <img src={heroAfter} alt={t.altAfter} draggable="false" className="lens-img lens-after" style={{ transition: anim ? 'clip-path .9s cubic-bezier(.7,0,.2,1)' : 'none' }} />
+      <div className="lens-ring" style={{ opacity: full ? 0 : 1 }}><span>{t.ring}</span></div>
       <div className="lens-shade" />
       <div className="lens-content">
         <div className="lens-head" data-reveal>
-          <span className="eyebrow">THE CONCEPT — MOVE THE LENS</span>
-          <h2 className="lens-h">See what your<br /><em>garden could be.</em></h2>
+          <span className="eyebrow">{t.eyebrow}</span>
+          <h2 className="lens-h">{t.h1}<br /><em>{t.h2}</em></h2>
         </div>
         <div className="lens-side" data-reveal style={{ '--d': '.2s' }}>
-          <span className="lens-hint"><span className="lens-dot" />{full ? 'THE FINISHED GARDEN' : (wide ? 'MOVE ACROSS THE LAWN' : 'TAP TO REVEAL')}</span>
-          <p>The same villa, the same lawn. Look through the lens to see the stone pool, olive trees and terrace the concept brings to it.</p>
+          <span className="lens-hint"><span className="lens-dot" />{full ? t.hintFull : (wide ? t.hintMove : t.hintTap)}</span>
+          <p>{t.body}</p>
           <div className="btn-row">
-            <a href="/#start" className="btn-light">Start your project</a>
-            <button type="button" className="btn-ghost-light" onClick={e => { e.stopPropagation(); set(!full); }}>{full ? 'Back to the lawn' : 'Reveal the full transformation'}</button>
+            <a href="/#start" className="btn-light">{t.cta}</a>
+            <button type="button" className="btn-ghost-light" onClick={e => { e.stopPropagation(); set(!full); }}>{full ? t.back : t.reveal}</button>
           </div>
-          {labels && <span className="concept-mark lens-concept">AFTER: CONCEPT VISUALISATION</span>}
+          {labels && <span className="concept-mark lens-concept">{t.concept}</span>}
         </div>
       </div>
     </section>

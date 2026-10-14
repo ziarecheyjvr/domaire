@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gardenImg from '../assets/garden-3-wellness.webp';
+import { useT } from '../i18n.jsx';
 
 const DELAY_MS = 10000;
 const SEEN_KEY = 'domaire-quote-modal-seen';
@@ -11,6 +12,7 @@ const markSeen = () => { try { sessionStorage.setItem(SEEN_KEY, '1'); } catch { 
 // Small invitation that appears once per visit, 10 seconds in, and sends visitors to the Start a project form.
 // formHref: '#start' on the home page, '/#start' from other pages.
 export default function QuoteModal({ formHref = '#start' }) {
+  const t = useT().modal;
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const dialogRef = useRef(null), btnRef = useRef(null), lastFocus = useRef(null);
@@ -72,13 +74,13 @@ export default function QuoteModal({ formHref = '#start' }) {
       <div ref={dialogRef} className="qm-card" role="dialog" aria-modal="true" aria-labelledby="qm-title" aria-describedby="qm-copy">
         <div className="qm-media" aria-hidden="true"><img src={gardenImg} alt="" /></div>
         <div className="qm-body">
-          <button type="button" className="qm-x" onClick={() => close()} aria-label="Close">×</button>
-          <span className="eyebrow">START A PROJECT</span>
-          <h2 id="qm-title" className="qm-title">Thinking about your <em>garden or home?</em></h2>
-          <p id="qm-copy" className="copy">Get a quote or book a site visit — tell us what you'd like to change and share photos of the space.</p>
+          <button type="button" className="qm-x" onClick={() => close()} aria-label={t.close}>×</button>
+          <span className="eyebrow">{t.eyebrow}</span>
+          <h2 id="qm-title" className="qm-title">{t.h1}<em>{t.h2}</em></h2>
+          <p id="qm-copy" className="copy">{t.body}</p>
           <div className="qm-actions">
-            <a ref={btnRef} href={formHref} className="fsubmit" onClick={goToForm}>Get a quote <span className="fsubmit-arrow">→</span></a>
-            <button type="button" className="qm-later" onClick={() => close()}>Maybe later</button>
+            <a ref={btnRef} href={formHref} className="fsubmit" onClick={goToForm}>{t.cta} <span className="fsubmit-arrow">→</span></a>
+            <button type="button" className="qm-later" onClick={() => close()}>{t.later}</button>
           </div>
         </div>
       </div>

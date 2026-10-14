@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useT } from '../i18n.jsx';
 
 // 01 Hero — looping build film: lawn → dig → stone pool → finished garden, then dissolves back to the lawn
 export default function VideoHero({ heroRef, m, labels }) {
+  const all = useT(), t = all.hero;
   const videoRef = useRef(null);
   // React doesn't render the muted attribute, which browsers require for autoplay — set it and start playback here
   useEffect(() => {
@@ -23,27 +25,27 @@ export default function VideoHero({ heroRef, m, labels }) {
         src="/media/hero-build-loop.mp4"
         poster="/media/hero-build-poster.jpg"
         autoPlay={m} muted loop playsInline preload="auto"
-        aria-label="Film: an empty villa lawn being excavated, built and finished as a natural stone pool garden"
+        aria-label={t.video}
       />
       <div className="vhero-shade" />
       <div className="vhero-scrim" />
       <div className="vhero-content">
         <div className="vhero-head">
-          <span className="eyebrow">DESIGN · BUILD · RENOVATE — MARBELLA &amp; COSTA DEL SOL</span>
+          <span className="eyebrow">{t.eyebrow}</span>
           <h1 className="vhero-h1">
-            <span className="vhero-line" style={{ '--i': 0 }}><span>Transforming homes.</span></span>
-            <span className="vhero-line" style={{ '--i': 1 }}><em>Inside and out.</em></span>
+            <span className="vhero-line" style={{ '--i': 0 }}><span>{t.l1}</span></span>
+            <span className="vhero-line" style={{ '--i': 1 }}><em>{t.l2}</em></span>
           </h1>
         </div>
         <div className="vhero-side">
-          <p>DOMAIRE designs, builds and renovates homes across Marbella and the Costa del Sol, with a particular specialism in exceptional outdoor spaces.</p>
+          <p>{t.body}</p>
           <div className="btn-row">
-            <a href="#start" className="btn-light">Start your project</a>
-            <a href="#tour" className="btn-ghost-light">Walk through the villa</a>
+            <a href="#start" className="btn-light">{t.cta1}</a>
+            <a href="#tour" className="btn-ghost-light">{t.cta2}</a>
           </div>
         </div>
       </div>
-      {labels && <span className="vhero-concept concept-mark">CONCEPT VISUALISATION</span>}
+      {labels && <span className="vhero-concept concept-mark">{all.concept}</span>}
     </section>
   );
 }
