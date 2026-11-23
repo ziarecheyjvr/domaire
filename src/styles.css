@@ -461,3 +461,4 @@ textarea.fi { resize: vertical; line-height: 1.55; min-height: 128px; }
 .footer-legal a { color: inherit; }
 .footer-legal a:hover { color: var(--terracotta); }
 .fconsent-link { text-decoration: underline; text-underline-offset: 3px; }
+.footer-email { align-self: flex-start; border-bottom: 1px solid var(--terracotta); padding-bottom: 3px; }

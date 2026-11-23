@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import heroBefore from '../assets/hero-before.jpg';
-import heroAfter from '../assets/hero-after.jpg';
+import heroBefore from '../assets/hero-before.webp';
+import heroAfter from '../assets/hero-after.webp';
 import { useT } from '../i18n.jsx';
 
 // See what your garden could be — a lens that reveals the finished garden over the lawn

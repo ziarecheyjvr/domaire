@@ -1,5 +1,5 @@
 import monogramChalk from '../assets/monogram-chalk.png';
-import { SOCIAL } from '../site.js';
+import { COMPANY, SOCIAL } from '../site.js';
 import { useT } from '../i18n.jsx';
 import LangSwitch from './LangSwitch.jsx';
 
@@ -20,6 +20,7 @@ export default function Footer() {
             <img src={monogramChalk} alt="" />
             <p className="footer-motto">{t.motto1}<br />{t.motto2}</p>
             <p className="footer-blurb">{t.blurb}</p>
+            <a href={`mailto:${COMPANY.email}`} className="footer-link footer-email">{COMPANY.email}</a>
           </div>
           {t.cols.map((col, c) => (
             <div key={col.h} className="footer-col">
