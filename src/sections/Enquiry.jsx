@@ -173,7 +173,7 @@ export default function Enquiry({ brief }) {
             <div className="eform-foot">
               <label className={'fconsent' + (show('consent') ? ' is-invalid' : '')}>
                 <input type="checkbox" name="consent" checked={f.consent} onChange={() => { set('consent', !f.consent); touch('consent'); }} />
-                <span>{t.consent}<span className="ff-req" aria-hidden="true"> *</span></span>
+                <span>{t.consent}<a href="/privacy/" target="_blank" rel="noopener" className="fconsent-link">{t.consentLink}</a>.<span className="ff-req" aria-hidden="true"> *</span></span>
               </label>
               <button type="submit" className="fsubmit">{t.submit} <span className="fsubmit-arrow">→</span></button>
             </div>

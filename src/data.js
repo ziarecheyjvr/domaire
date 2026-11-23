@@ -1,13 +1,15 @@
-import villaAfter from './assets/villa-after.png';
+import villaAfter from './assets/villa-after.webp';
 import gLawnKitchen from './assets/garden-1-kitchen.webp';
 import gPool from './assets/garden-2-pool.webp';
 import gWellness from './assets/garden-3-wellness.webp';
 import gGym from './assets/garden-4-gym.webp';
 import gDusk from './assets/garden-5-dusk.webp';
 import livingAfter from './assets/interior-after.webp';
+import tileBath from './assets/tile-bathroom.webp';
+import tileVilla from './assets/tile-villa.webp';
+import tileExt from './assets/tile-extension.webp';
 import kitchenAfter from './assets/kitchen-after.webp';
 
-export const PX = (id, w) => 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=' + (w || 900);
 export const AFTER = villaAfter;
 
 // nav key (label in content.js), anchor
@@ -62,10 +64,10 @@ export const TILES = [
   ['shade', 'out', AFTER, '380%', '2% 44%', ['architect', 'structural']],
   ['light', 'out', gDusk, '160%', '55% 60%', ['lighting', 'electrical']],
   ['kitchen', 'in', kitchenAfter, 'cover', 'center', ['kitchen', 'mep']],
-  ['bath', 'in', PX(1457847), 'cover', 'center', ['interior', 'plumbing']],
+  ['bath', 'in', tileBath, 'cover', 'center', ['interior', 'plumbing']],
   ['interiors', 'in', livingAfter, 'cover', 'center', ['interior']],
-  ['villa', 'in', PX(323780), 'cover', 'center', ['architect', 'interior', 'structural', 'mep']],
-  ['ext', 'in', PX(1974596), 'cover', 'center', ['architect', 'structural', 'licensing']]
+  ['villa', 'in', tileVilla, 'cover', 'center', ['architect', 'interior', 'structural', 'mep']],
+  ['ext', 'in', tileExt, 'cover', 'center', ['architect', 'structural', 'licensing']]
 ];
 
 // Enquiry form option ids (labels: content.options)

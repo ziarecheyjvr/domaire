@@ -448,3 +448,16 @@ textarea.fi { resize: vertical; line-height: 1.55; min-height: 128px; }
   .qm-x { background: rgba(246, 243, 236, .9); top: 10px; right: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .qm, .qm-card, .qm.is-closing, .qm.is-closing .qm-card { animation: none; } }
+
+/* Legal pages */
+.legal { max-width: 780px; margin: 0 auto; padding: 170px var(--gutter) clamp(80px, 9vw, 130px); display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.legal .text-link { margin-bottom: 24px; }
+.legal section { display: flex; flex-direction: column; gap: 12px; padding-top: 22px; }
+.legal h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 25px; line-height: 1.2; }
+.legal p, .legal li { margin: 0; font-size: 15.5px; line-height: 1.7; font-weight: 300; color: var(--body); overflow-wrap: anywhere; }
+.legal ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.legal .legal-date { font-size: 13px; }
+.legal-todo { background: #F3DCCB; color: #8A3F1F; padding: 1px 5px; border-radius: 3px; }
+.footer-legal a { color: inherit; }
+.footer-legal a:hover { color: var(--terracotta); }
+.fconsent-link { text-decoration: underline; text-underline-offset: 3px; }

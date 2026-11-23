@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import villaBefore from '../assets/villa-before.png';
+import villaBefore from '../assets/villa-before.webp';
 import { AFTER } from '../data.js';
 import { useT } from '../i18n.jsx';
 import { clamp } from '../util.js';

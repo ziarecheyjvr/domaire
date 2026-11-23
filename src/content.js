@@ -157,7 +157,7 @@ const en = {
     tooBig: (n, mb) => `${n} over ${mb}MB`,
     limit: n => `limit is ${n} files`,
     remove: 'Remove',
-    consent: 'I agree to be contacted about my enquiry and to the privacy policy.',
+    consent: 'I agree to be contacted about my enquiry and to the ', consentLink: 'privacy policy',
     submit: 'Send enquiry',
     errors: {
       name: 'Please enter your name.', email: 'Please enter your email.', emailBad: 'Please enter a valid email address.',
@@ -189,7 +189,7 @@ const en = {
       { h: 'AREAS', items: ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'] }
     ],
     base: '© DOMAIRE · DESIGN · BUILD · RENOVATE',
-    legal: 'Privacy · Legal notice · Cookies · Instagram · LinkedIn'
+    legal: { privacy: 'Privacy', legal: 'Legal notice', cookies: 'Cookies' }
   },
 
   about: {
@@ -372,7 +372,7 @@ const es = {
     tooBig: (n, mb) => `${n} ${n === 1 ? 'supera' : 'superan'} los ${mb} MB`,
     limit: n => `el límite es de ${n} archivos`,
     remove: 'Quitar',
-    consent: 'Acepto ser contactado en relación con mi consulta y la política de privacidad.',
+    consent: 'Acepto que se me contacte en relación con mi consulta y acepto la ', consentLink: 'política de privacidad',
     submit: 'Enviar consulta',
     errors: {
       name: 'Introduzca su nombre.', email: 'Introduzca su correo electrónico.', emailBad: 'Introduzca un correo electrónico válido.',
@@ -404,7 +404,7 @@ const es = {
       { h: 'ZONAS', items: ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'] }
     ],
     base: '© DOMAIRE · DISEÑO · CONSTRUCCIÓN · REFORMA',
-    legal: 'Privacidad · Aviso legal · Cookies · Instagram · LinkedIn'
+    legal: { privacy: 'Privacidad', legal: 'Aviso legal', cookies: 'Cookies' }
   },
 
   about: {

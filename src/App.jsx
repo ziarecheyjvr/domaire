@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import useViewport from './useViewport.js';
 import useReveal from './useReveal.js';
+import useHashScroll from './useHashScroll.js';
 import Header from './sections/Header.jsx';
 import VideoHero from './sections/VideoHero.jsx';
 import Statement from './sections/Statement.jsx';
@@ -20,6 +21,7 @@ export default function App({ motion = true, showConceptLabels = true }) {
   // The brief composed in "What we do" — handed to the enquiry form on "Continue with this brief"
   const [brief, setBrief] = useState(null);
   useReveal();
+  useHashScroll();
   const m = motion && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = { w, vh, y, m, wide: w >= 1180, labels: showConceptLabels };
 
