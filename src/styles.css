@@ -113,7 +113,7 @@ section[id] { scroll-margin-top: 0; }
 .ways { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
 .way { display: flex; flex-direction: column; gap: 10px; }
 .way-media { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 4px; background: var(--linen); margin-bottom: 10px; }
-.way-img { position: absolute; inset: 0; transition: transform 1.4s var(--ease-enter); }
+.way-img { position: absolute; inset: 0; background-repeat: no-repeat; transition: transform 1.4s var(--ease-enter); }
 .way:hover .way-img { transform: scale(1.05); }
 .way-n { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--terracotta); }
 .way-k { font-size: 10.5px; letter-spacing: .28em; font-weight: 500; }

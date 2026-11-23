@@ -22,7 +22,7 @@ export const NAV = [
 // A better way to live at home (copy: content.ways): image, background-size, background-position
 export const BETTER_WAYS = [
   [AFTER, '300%', '42% 52%'],
-  [gWellness, '170%', '50% 70%'],
+  [gWellness, 'cover', '50% 50%'],
   [kitchenAfter, 'cover', '40% 50%'],
   [livingAfter, 'cover', '35% 50%']
 ];
