@@ -188,7 +188,7 @@ const en = {
       { h: 'RENOVATIONS', items: ['Complete Villas', 'Interiors', 'Kitchens', 'Bathrooms'] },
       { h: 'AREAS', items: ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'] }
     ],
-    base: '© DOMAIRE · DESIGN · BUILD · RENOVATE',
+    base: '© KLB Solutions FZCO, trading as DOMAIRE',
     legal: { privacy: 'Privacy', legal: 'Legal notice', cookies: 'Cookies' }
   },
 
@@ -403,7 +403,7 @@ const es = {
       { h: 'REFORMAS', items: ['Villas completas', 'Interiorismo', 'Cocinas', 'Baños'] },
       { h: 'ZONAS', items: ['Marbella', 'Benahavís', 'Estepona', 'Costa del Sol'] }
     ],
-    base: '© DOMAIRE · DISEÑO · CONSTRUCCIÓN · REFORMA',
+    base: '© KLB Solutions FZCO, que opera como DOMAIRE',
     legal: { privacy: 'Privacidad', legal: 'Aviso legal', cookies: 'Cookies' }
   },
 

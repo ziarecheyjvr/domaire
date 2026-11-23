@@ -1,14 +1,14 @@
-// Company details used by the legal pages and footer — fill these in before launch.
-// Anything left null shows on the legal pages as a highlighted [placeholder].
+// Company details used by the legal pages and footer.
+// Source: https://os.worldie.ai/privacy (5 October 2026). A null value shows as a highlighted [placeholder].
 export const COMPANY = {
-  name: null,       // registered legal name, e.g. 'DOMAIRE Design & Build S.L.'
-  taxId: null,      // NIF / CIF
-  address: null,    // registered address
-  registry: null,   // Registro Mercantil details
-  email: null,      // contact address for enquiries and data requests
-  phone: null,
-  host: null,       // hosting provider
-  retention: null   // how long enquiries are kept: { en: '12 months', es: '12 meses' }
+  name: { en: 'KLB Solutions FZCO, trading as DOMAIRE', es: 'KLB Solutions FZCO, que opera con el nombre comercial DOMAIRE' },
+  registration: 'DSO-FZCO-19439',
+  address: {
+    en: 'Unit No. 21089-001, IFZA Business Park, DDP, Dubai, United Arab Emirates',
+    es: 'Unit No. 21089-001, IFZA Business Park, DDP, Dubái, Emiratos Árabes Unidos'
+  },
+  email: 'adam@klb-solutions.com',
+  retention: { en: '12 months', es: '12 meses' }
 };
 
 // Links appear in the footer once a URL is set
