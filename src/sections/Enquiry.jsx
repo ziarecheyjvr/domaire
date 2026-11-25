@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import monogramChalk from '../assets/monogram-chalk.png';
 import { BUDGET_IDS, PLACE_IDS, WHEN_IDS, WORK_IDS } from '../data.js';
-import { useT } from '../i18n.jsx';
+import { useLang } from '../i18n.jsx';
+import { COMPANY, FORM } from '../site.js';
+import Turnstile from '../Turnstile.jsx';
 
-const MAX_FILES = 10;
-const MAX_MB = 15;
-const ACCEPT = 'image/*,application/pdf';
+const MAX_FILES = 5;
+const MAX_MB = 20; // for all files together
+const TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif', 'application/pdf'];
+const ACCEPT = TYPES.join(',') + ',.heic,.heif';
+const allowed = x => TYPES.includes(x.type) || /\.hei[cf]$/i.test(x.name);
+const viewable = x => ['image/jpeg', 'image/png', 'image/webp'].includes(x.type);
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const EMPTY = { name: '', email: '', phone: '', place: '', work: [], budget: '', when: '', message: '', consent: false };
 
@@ -15,7 +20,7 @@ const sizeLabel = b => b > 1024 * 1024 ? (b / 1024 / 1024).toFixed(1) + ' MB' : 
 // Fields carry name attributes so the form can be pointed at a form service or API as-is; option values are
 // language-independent ids, so a visitor can switch language mid-form without losing their choices.
 export default function Enquiry({ brief }) {
-  const all = useT(), t = all.form, opt = all.options;
+  const { t: all, lang } = useLang(), t = all.form, opt = all.options;
   const [f, setF] = useState(EMPTY);
   const [touched, setTouched] = useState({});
   const [tried, setTried] = useState(false);
@@ -51,24 +56,48 @@ export default function Enquiry({ brief }) {
   const filesRef = useRef(files); filesRef.current = files;
   useEffect(() => () => filesRef.current.forEach(x => x.url && URL.revokeObjectURL(x.url)), []);
   const addFiles = list => {
-    const all = [...list].filter(x => x.type.startsWith('image/') || x.type === 'application/pdf');
+    const all = [...list].filter(allowed);
     const skippedType = list.length - all.length;
-    const tooBig = all.filter(x => x.size > MAX_MB * 1024 * 1024).length;
-    const ok = all.filter(x => x.size <= MAX_MB * 1024 * 1024).slice(0, Math.max(0, MAX_FILES - files.length));
-    const over = all.length - tooBig - ok.length;
+    let total = files.reduce((n, x) => n + x.file.size, 0), tooBig = 0, over = 0;
+    const ok = [];
+    all.forEach(x => {
+      if (files.length + ok.length >= MAX_FILES) over++;
+      else if (total + x.size > MAX_MB * 1024 * 1024) tooBig++;
+      else { ok.push(x); total += x.size; }
+    });
     setNote({ type: skippedType, big: tooBig, over: over > 0 });
-    setFiles(p => [...p, ...ok.map(x => ({ id: x.name + x.size + x.lastModified + Math.random(), file: x, url: x.type.startsWith('image/') ? URL.createObjectURL(x) : null }))]);
+    setFiles(p => [...p, ...ok.map(x => ({ id: x.name + x.size + x.lastModified + Math.random(), file: x, url: viewable(x) ? URL.createObjectURL(x) : null }))]);
   };
   const removeFile = id => setFiles(p => { const x = p.find(q => q.id === id); if (x && x.url) URL.revokeObjectURL(x.url); return p.filter(q => q.id !== id); });
   const browse = () => fileRef.current && fileRef.current.click();
 
-  const submit = e => {
+  // Captcha token, and the state of the request
+  const [token, setToken] = useState('');
+  const [round, setRound] = useState(0);
+  const [status, setStatus] = useState('idle'); // idle | sending | an error code from the server
+  const [trap, setTrap] = useState('');         // honeypot, invisible to people
+
+  const submit = async e => {
     e.preventDefault(); setTried(true);
+    if (status === 'sending') return;
     if (!valid) { const first = e.currentTarget.querySelector('[aria-invalid="true"], .is-invalid'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    // No backend yet — the enquiry (FormData incl. files) is ready to POST here
-    setSent(true);
+    if (!token) { setStatus('captcha'); return; }
+    const data = new FormData();
+    Object.entries({ name: f.name, email: f.email, phone: f.phone, location: f.place, budget: f.budget, timing: f.when, message: f.message, consent: 'yes', lang, company_site: trap, 'cf-turnstile-response': token }).forEach(([k, v]) => data.append(k, v));
+    f.work.forEach(w => data.append('work[]', w));
+    files.forEach(x => data.append('files[]', x.file, x.file.name));
+    setStatus('sending');
+    let code = 'server';
+    try {
+      const r = await fetch(FORM.endpoint, { method: 'POST', body: data });
+      const body = await r.json();
+      code = body.ok === true ? '' : body.error || 'server';
+    } catch { /* offline, timeout or a non-JSON reply */ }
+    setToken(''); setRound(n => n + 1); // tokens are single-use
+    if (code) { setStatus(code); return; }
+    setStatus('idle'); setSent(true);
   };
-  const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(null); setF(EMPTY); setTouched({}); setTried(false); setSent(false); setFromBrief(false); };
+  const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(null); setF(EMPTY); setTouched({}); setTried(false); setSent(false); setFromBrief(false); setStatus('idle'); };
 
   const field = (k, label, input, { req, hint } = {}) => (
     <label className={'ff' + (show(k) ? ' is-invalid' : '')}>
@@ -161,7 +190,7 @@ export default function Enquiry({ brief }) {
                 <ul className="flist">
                   {files.map(x => (
                     <li key={x.id} className="fitem">
-                      {x.url ? <img src={x.url} alt="" /> : <span className="fitem-pdf">PDF</span>}
+                      {x.url ? <img src={x.url} alt="" /> : <span className="fitem-pdf">{/pdf$/i.test(x.file.type) ? 'PDF' : 'IMG'}</span>}
                       <span className="fitem-meta"><span className="fitem-name">{x.file.name}</span><span className="fitem-size">{sizeLabel(x.file.size)}</span></span>
                       <button type="button" className="fitem-x" onClick={() => removeFile(x.id)} aria-label={t.remove + ' ' + x.file.name}>×</button>
                     </li>
@@ -170,14 +199,20 @@ export default function Enquiry({ brief }) {
               )}
             </div>
 
+            <input type="text" name="company_site" value={trap} onChange={e => setTrap(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="ftrap" />
+            <Turnstile siteKey={FORM.turnstileSiteKey} lang={lang} resetKey={round} onToken={v => { setToken(v); if (v) setStatus(s => s === 'captcha' ? 'idle' : s); }} />
+
             <div className="eform-foot">
               <label className={'fconsent' + (show('consent') ? ' is-invalid' : '')}>
                 <input type="checkbox" name="consent" checked={f.consent} onChange={() => { set('consent', !f.consent); touch('consent'); }} />
                 <span>{t.consent}<a href="/privacy/" target="_blank" rel="noopener" className="fconsent-link">{t.consentLink}</a>.<span className="ff-req" aria-hidden="true"> *</span></span>
               </label>
-              <button type="submit" className="fsubmit">{t.submit} <span className="fsubmit-arrow">→</span></button>
+              <button type="submit" className="fsubmit" disabled={status === 'sending'}>{status === 'sending' ? t.sending : t.submit} <span className="fsubmit-arrow">→</span></button>
             </div>
             {show('consent') && <span className="ff-err" role="alert">{errors.consent}</span>}
+            {status !== 'idle' && status !== 'sending' && (
+              <p className="fstatus" role="alert">{t.failed[status] || t.failed.server} <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></p>
+            )}
             <p className="eform-note"><span className="ff-req">*</span> {t.required}</p>
           </form>
         ) : (

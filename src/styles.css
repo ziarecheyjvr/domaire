@@ -462,3 +462,10 @@ textarea.fi { resize: vertical; line-height: 1.55; min-height: 128px; }
 .footer-legal a:hover { color: var(--terracotta); }
 .fconsent-link { text-decoration: underline; text-underline-offset: 3px; }
 .footer-email { align-self: flex-start; border-bottom: 1px solid var(--terracotta); padding-bottom: 3px; }
+
+/* Enquiry: captcha, honeypot, send status */
+.fcaptcha { min-height: 65px; }
+.ftrap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fsubmit:disabled { opacity: .6; cursor: progress; }
+.fstatus { margin: 0; padding: 12px 14px; border-radius: 6px; background: #F8E4DA; color: #7E3318; font-size: 14px; line-height: 1.5; }
+.fstatus a { color: inherit; text-decoration: underline; }

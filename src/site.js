@@ -12,4 +12,16 @@ export const COMPANY = {
 };
 
 // Links appear in the footer once a URL is set
-export const SOCIAL = { Instagram: '', LinkedIn: '' };
+export const SOCIAL = {
+  Facebook: 'https://www.facebook.com/domaire',
+  Instagram: 'https://www.instagram.com/domaire.co',
+  YouTube: 'https://www.youtube.com/@domaire',
+  LinkedIn: ''
+};
+
+// Enquiry form. The Turnstile site key is public; its secret stays on the server (see server/).
+export const FORM = {
+  endpoint: '/api/enquiry.php',
+  // '1x00000000000000000000AA' is Cloudflare's always-pass test key, for local development only
+  turnstileSiteKey: import.meta.env.DEV ? '1x00000000000000000000AA' : ''
+};
