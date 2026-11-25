@@ -113,6 +113,7 @@ if (rate_limited($ip)) done(429, 'rate');
     json_encode(['secret' => $config['turnstile_secret'], 'response' => text('cf-turnstile-response', 2048)]));
 $check = json_decode($body, true);
 if ($status === 0 || $status >= 500) done(502, 'server');
+if (empty($check['success'])) error_log('DOMAIRE enquiry: Turnstile said ' . implode(', ', (array) ($check['error-codes'] ?? [])));
 if (empty($check['success']) || (!empty($config['hostnames']) && !in_array($check['hostname'] ?? '', $config['hostnames'], true))) done(403, 'captcha');
 
 $lines = [

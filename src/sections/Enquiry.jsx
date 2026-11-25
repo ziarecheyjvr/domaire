@@ -94,7 +94,8 @@ export default function Enquiry({ brief }) {
       code = body.ok === true ? '' : body.error || 'server';
     } catch { /* offline, timeout or a non-JSON reply */ }
     setToken(''); setRound(n => n + 1); // tokens are single-use
-    if (code) { setStatus(code); return; }
+    // 'captcha' is cleared by the next token; a rejection by the server must stay on screen
+    if (code) { setStatus(code === 'captcha' ? 'server' : code); return; }
     setStatus('idle'); setSent(true);
   };
   const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(null); setF(EMPTY); setTouched({}); setTried(false); setSent(false); setFromBrief(false); setStatus('idle'); };
