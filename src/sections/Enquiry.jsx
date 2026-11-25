@@ -98,6 +98,13 @@ export default function Enquiry({ brief }) {
     if (code) { setStatus(code === 'captcha' ? 'server' : code); return; }
     setStatus('idle'); setSent(true);
   };
+  // The thank-you is much shorter than the form, so bring it into view (and to screen readers) once sent
+  const thanksRef = useRef(null);
+  useEffect(() => {
+    if (!sent || !thanksRef.current) return;
+    thanksRef.current.focus({ preventScroll: true });
+    thanksRef.current.scrollIntoView({ block: 'center' });
+  }, [sent]);
   const reset = () => { files.forEach(x => x.url && URL.revokeObjectURL(x.url)); setFiles([]); setNote(null); setF(EMPTY); setTouched({}); setTried(false); setSent(false); setFromBrief(false); setStatus('idle'); };
 
   const field = (k, label, input, { req, hint } = {}) => (
@@ -217,7 +224,7 @@ export default function Enquiry({ brief }) {
             <p className="eform-note"><span className="ff-req">*</span> {t.required}</p>
           </form>
         ) : (
-          <div className="start-thanks" data-reveal>
+          <div ref={thanksRef} tabIndex={-1} className="start-thanks" data-reveal>
             <p>{t.thanks(f.name.trim().split(' ')[0])}</p>
             <span className="copy start-copy">
               {t.thanksBody(f.work.map(o => opt.work[o]).join(', ').toLowerCase(), f.place ? opt.place[f.place] : '', files.length)}

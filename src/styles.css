@@ -469,3 +469,4 @@ textarea.fi { resize: vertical; line-height: 1.55; min-height: 128px; }
 .fsubmit:disabled { opacity: .6; cursor: progress; }
 .fstatus { margin: 0; padding: 12px 14px; border-radius: 6px; background: #F8E4DA; color: #7E3318; font-size: 14px; line-height: 1.5; }
 .fstatus a { color: inherit; text-decoration: underline; }
+.start-thanks:focus { outline: none; }
