@@ -23,5 +23,5 @@ export const SOCIAL = {
 export const FORM = {
   endpoint: '/api/enquiry.php',
   // '1x00000000000000000000AA' is Cloudflare's always-pass test key, for local development only
-  turnstileSiteKey: import.meta.env.DEV ? '1x00000000000000000000AA' : ''
+  turnstileSiteKey: import.meta.env.DEV ? '1x00000000000000000000AA' : '0x4AAAAAAGSAA8gFWSArJSmE'
 };
